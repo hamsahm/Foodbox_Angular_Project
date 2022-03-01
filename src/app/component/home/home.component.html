@@ -2,12 +2,19 @@
 <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-light" style="width:280px;">
 <ul class="nav nav-pills flex-column mb-auto" style="color:black;"  *ngFor="let category of categories">
 <li class="nav-item">
-  <a href=""> {{category}} </a>  
-   </li>
-<!-- <li class="nav-item">Item2</li>
-<li class="nav-item">Item3</li> -->
+  <a [routerLink]="['/categories',category.categoryId]"> {{category.categoryName}} </a>  
+</li>
 </ul>
+</div>
+<div class="section">
+	<div class="col-sm-4" *ngFor="let food of foods">
+	<div class="card">
 
+    <h4>{{food.foodName}}</h4>
+    <h4>{{food.description}}</h4>
+    </div>
+    </div>
+    
 
 </div>
 
