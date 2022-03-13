@@ -16,17 +16,16 @@ export class CartComponent implements OnInit {
   constructor(private foodService: FoodService) { }
 
   ngOnInit(): void {
-    console.log("initof cart components before getting foods");
     this.foods = this.foodService.getCartItems();
 
-    console.log("after getting foods "+this.foods)
 
     for (var food of this.foods) {
-      this.totalPrice = this.totalPrice + food.foodPrice;
+      this.totalPrice = this.totalPrice + food.price;
     }
   }
 
   placeOrder(): void{
+    
     alert(" The order placed successfully");
 }
 

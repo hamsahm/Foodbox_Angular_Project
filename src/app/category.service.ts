@@ -17,7 +17,6 @@ export class CategoryService {
 
   getCategories() {
 
-    // config: Config | undefined;
     let resp = this.http.get<Category[]>(`http://localhost:8080/categories`);
 
     resp.subscribe(data => {
@@ -48,7 +47,7 @@ export class CategoryService {
 
         resp.subscribe(data => {
           data.forEach(food =>
-            this.foods.push(new Food(food.foodId, food.foodName, food.foodPrice, food.imageUrl, food.category, food.description, food.offers))
+            this.foods.push(new Food(food.foodId, food.foodName, food.price, food.imageUrl, food.category, food.description, food.offers))
 
           )
         }
@@ -60,7 +59,6 @@ export class CategoryService {
     console.log("this.foods.length inside service before return>>>> " + this.foods.length)
 
     return this.foods
-
 
   }
 

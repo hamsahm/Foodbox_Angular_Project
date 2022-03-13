@@ -11,8 +11,8 @@
     <tbody>
         <tr scope="row" *ngFor="let food of foods">
             <td>{{food.foodName}}</td>
-            <td>{{food.foodPrice}}</td>
-            <td>{{food.category}}</td> 
+            <td>{{food.price}}</td>
+            <td>{{food.category.categoryName}}</td> 
         </tr>
     </tbody>
   </table>

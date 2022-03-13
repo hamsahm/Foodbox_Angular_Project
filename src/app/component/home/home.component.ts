@@ -13,34 +13,27 @@ import { FoodService } from 'src/app/food.service';
 export class HomeComponent implements OnInit {
 
   categories: Category[] = [];
-  foods:Food[] = [];
-  
-  constructor(private categoryService: CategoryService,private route: ActivatedRoute, private foodService:FoodService) { }
+  foods: Food[] = [];
+
+  constructor(private categoryService: CategoryService, private route: ActivatedRoute, private foodService: FoodService) { }
 
   ngOnInit(): void {
+    this.categories = [];
     this.categories = this.categoryService.getCategories();
 
-// calling food items for category 0 on click on init
-   this.foods = this.categoryService.getFoodsByCategory(0);
-    
+    this.foods = [];
+    // calling food items for category 0 on click on init
+    this.foods = this.categoryService.getFoodsByCategory(0);
+
   }
 
-  getFoodsByCategory(categoryId: number){
-    console.log(" on click on food category ")
+  getFoodsByCategory(categoryId: number) {
     this.foods = this.categoryService.getFoodsByCategory(categoryId);
-
-    console.log("this.foods.length >>>>>>>"+this.foods.length)
-
   }
 
-  addToCart(food: Food){
-    console.log(" On click on add to cart");
-    console.log(" On click on add to cart food.foodName >>>>>>>>"+food.foodName);
+  addToCart(food: Food) {
 
-    console.log(" On click on add to cart food.foodPrice >>>>>>>>>>"+food.foodPrice);
     this.foodService.cartItems.push(food);
-
-    console.log("After pushing food into cart");
 
   }
 }
