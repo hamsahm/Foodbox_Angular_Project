@@ -1,20 +1,26 @@
 <p>home works!</p>
-<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-light" style="width:280px;">
-<ul class="nav nav-pills flex-column mb-auto" style="color:black;"  *ngFor="let category of categories">
-<li class="nav-item">
-  <a [routerLink]="['/categories',category.categoryId]"> {{category.categoryName}} </a>  
-</li>
-</ul>
-</div>
-<div class="section">
-	<div class="col-sm-4" *ngFor="let food of foods">
-	<div class="card">
+    <mat-sidenav-container>
+      <mat-sidenav #sidenav mode="side" opened>
+          <ul class="nav flex-column" style="color:black;"  *ngFor="let category of categories">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/categories',category.categoryId]" (click)="getFoodsByCategory(category.categoryId)"> {{category.categoryName}} </a>  
+          </li>
+          </ul> 
+        <!-- <mat-nav-list *ngFor="let category of categories" >
+              <a [routerLink]="['/categories',category.categoryId]"> {{category.categoryName}} </a>  
+        </mat-nav-list> -->
 
-    <h4>{{food.foodName}}</h4>
-    <h4>{{food.description}}</h4>
-    </div>
-    </div>
-    
-
-</div>
-
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <p>inside side nav content</p>
+        <ul *ngFor="let food of foods">
+      <li> <p>Food</p>
+          <div class="card">
+            <h4>{{food.foodName}}</h4>
+            <h4>{{food.description}}</h4>
+            <button type="submit" class="btn btn-link" (click)="addToCart(food)">Add to Cart</button>
+          </div>
+          </li>
+        </ul>
+      </mat-sidenav-content>
+    </mat-sidenav-container>

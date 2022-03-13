@@ -1,0 +1,22 @@
+<p>cart works!</p>
+
+<table class="table table-bordered" [hidden]="hidden">
+    <thead>
+      <tr>
+        <th scope="col">Food Name</th>
+        <th scope="col">Food Price</th>
+        <th scope="col">Food Categort</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr scope="row" *ngFor="let food of foods">
+            <td>{{food.foodName}}</td>
+            <td>{{food.foodPrice}}</td>
+            <td>{{food.category}}</td> 
+        </tr>
+    </tbody>
+  </table>
+
+<p style="text-align:right;font-weight:bold" [hidden]="hidden">Total Price: {{totalPrice}}</p>
+
+<button type="submit" class="btn btn-primary" (click)="placeOrder()" [hidden]="hidden">Place Order</button>
