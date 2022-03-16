@@ -1,5 +1,6 @@
-<p>cart works!</p>
-
+<br/>
+<h4>Checkout Page</h4>
+<br/>
 <table class="table table-bordered" [hidden]="hidden">
     <thead>
       <tr>
@@ -19,4 +20,4 @@
 
 <p style="text-align:right;font-weight:bold" [hidden]="hidden">Total Price: {{totalPrice}}</p>
 
-<button type="submit" class="btn btn-primary" (click)="placeOrder()" [hidden]="hidden">Place Order</button>
+<button type="submit" class="btn btn-primary" (click)="placeOrder(foods, totalPrice)" [hidden]="hidden">Place Order</button>

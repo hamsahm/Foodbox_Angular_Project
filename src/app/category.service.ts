@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Category } from './category.model';
 import { Food } from './food.model';
 
@@ -17,6 +16,7 @@ export class CategoryService {
 
   getCategories() {
 
+    this.foods = []
     let resp = this.http.get<Category[]>(`http://localhost:8080/categories`);
 
     resp.subscribe(data => {
@@ -27,7 +27,6 @@ export class CategoryService {
     }
     )
 
-
     return this.categories;
   }
 
@@ -35,13 +34,9 @@ export class CategoryService {
   getFoodsByCategory(categoryId: number): Food[] {
 
     this.foods = []
-    console.log(" inside get foods by category " + categoryId)
     this.categories.find(category => {
 
-      console.log("before if")
-
       if (category.categoryId === categoryId) {
-        console.log("after  if category.categoryId  >>>>>>" + category.categoryId)
         this.categoryName = category.categoryName;
         let resp = this.http.get<Food[]>(`http://localhost:8080/foods?categoryName=${category.categoryName}`);
 
@@ -56,7 +51,6 @@ export class CategoryService {
 
 
     })
-    console.log("this.foods.length inside service before return>>>> " + this.foods.length)
 
     return this.foods
 
